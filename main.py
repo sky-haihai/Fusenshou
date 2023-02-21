@@ -116,7 +116,7 @@ def onEndDuel():
     t.sleep(1)
 
     #in case obtained something
-    coord=getCoord('res/confirm_btn.png',max_trail=5)
+    coord=getCoord('res/confirm_btn.png',maxTrial=5)
     if(coord!=None):
         x,y=coord
         gui.moveTo(x,y,duration)
