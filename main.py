@@ -1,6 +1,5 @@
 import pyautogui as gui
 import time as t
-import keyboard
 
 #set interval between each pyautogui call
 gui.PAUSE = 1
