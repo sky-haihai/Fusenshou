@@ -122,7 +122,7 @@ def onEndDuel():
         gui.moveTo(x,y,duration)
         gui.click()
 
-    if(getCoord('res/start_duel_btn.png',1)!=None):
+    if(getCoord('res/start_duel_btn.png')!=None):
         changeState('StartDuel')
 
 #find a random card and discard
