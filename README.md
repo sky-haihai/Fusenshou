@@ -1,6 +1,6 @@
-# Fusenshou
+# 我が名は、不戦勝 (Fusenshou)
 
-##Dependencies
+## Dependencies
 ```
 pip install pyautogui
 pip install Pillow
