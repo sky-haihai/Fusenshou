@@ -3,6 +3,7 @@ import time as t
 
 #set interval between each pyautogui call
 gui.PAUSE = 1
+duration=1 # mouse travel duration
 
 print(gui.size())
 print(gui.position())
@@ -29,7 +30,7 @@ def changeState(targetState):
 # enter match making
 def onStartDuel():
     x,y=getCoord('res/start_duel_btn.png')
-    gui.moveTo(x,y,1)
+    gui.moveTo(x,y,duration)
     gui.click()
     # wait for coin flip
     t.sleep(20)
@@ -39,9 +40,9 @@ def onStartDuel():
 def onTurnOffCounter():
     x,y=getCoord('res/counter_auto_btn.png')
     t.sleep(2)
-    gui.moveTo(x,y,1)
+    gui.moveTo(x,y,duration)
     gui.click()
-    gui.moveTo(x+100,y-100,1)
+    gui.moveTo(x+100,y-100,duration)
     t.sleep(5)
 
     coord=getCoord('res/oppo_turn_main1_btn.png',maxTrial=10)    
@@ -65,13 +66,13 @@ def onPlayerTurn():
 
     #click turn btn
     x,y=getCoord('res/turn_main1_btn.png',0.9)
-    gui.moveTo(x,y,1)
+    gui.moveTo(x,y,duration)
     print('Click Turn Btn')
     gui.click()
 
     #click end btn
     x,y=getCoord('res/turn_end_btn.png')
-    gui.moveTo(x,y,1)
+    gui.moveTo(x,y,duration)
     print('Click End Btn')
     gui.click()
     
@@ -88,7 +89,7 @@ def onOpponentTurn():
         coord=getCoord('res/continue_turn_prompt.png',maxTrial=1)
         if(coord!=None):
             x,y=getCoord('res/continue_turn_confirm_btn.png')
-            gui.moveTo(x,y,1)
+            gui.moveTo(x,y,duration)
             print('Click No to not continue players turn')
             gui.click()
             t.sleep(1)
@@ -106,11 +107,11 @@ def onOpponentTurn():
 def onEndDuel():
     for i in range(3):
         x,y=getCoord('res/confirm_btn.png')
-        gui.moveTo(x,y,1)
+        gui.moveTo(x,y,duration)
         gui.click()
 
     x,y=getCoord('res/return_to_menu_btn.png')
-    gui.moveTo(x,y,1)
+    gui.moveTo(x,y,duration)
     gui.click()
     t.sleep(1)
 
@@ -118,7 +119,7 @@ def onEndDuel():
     coord=getCoord('res/confirm_btn.png',max_trail=5)
     if(coord!=None):
         x,y=coord
-        gui.moveTo(x,y,1)
+        gui.moveTo(x,y,duration)
         gui.click()
 
     if(getCoord('res/start_duel_btn.png',1)!=None):
@@ -128,10 +129,10 @@ def onEndDuel():
 def onDiscardCard():
     x,y=getCoord('res/discard_confirm_btn.png')
     #select card
-    gui.moveTo(x,y-100,1)
+    gui.moveTo(x,y-100,duration)
     gui.click()
     #confirm
-    gui.moveTo(x,y,1)
+    gui.moveTo(x,y,duration)
     gui.click()
 
     changeState('OpponentTurn')
@@ -152,28 +153,7 @@ try:
             case 'DiscardCard':
                 onDiscardCard()
             case 'EndDuel':
-                onEndDuel()   
-
-        #click n to skip a state
-        #if(keyboard.is_pressed('n')):
-        #    print('Skipping to Next State')
-        #    match currentState:
-        #        case 'StartDuel':
-        #            changeState('TurnOffCounter')
-        #        case 'TurnOffCounter':
-        #            changeState('PlayerTurn')
-        #        case 'PlayerTurn':
-        #            changeState('DiscardCard')
-        #        case 'OpponentTurn':
-        #            changeState('PlayerTurn')
-        #        case 'DiscardCard':
-        #            changeState('PlayerTurn')
-        #        case 'StartDuel':
-        #            changeState('PlayerTurn')
-
-        #t.sleep(1/30) 
+                onEndDuel()    
 except KeyboardInterrupt:
     print('Stop Grinding')
     pass
-
-# if needs to discard card, move to center bottom and click discard
