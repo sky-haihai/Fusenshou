@@ -6,3 +6,6 @@ pip install pyautogui
 pip install Pillow
 pip install opencv-python
 ```
+## Environment
+Yu-Gi-Oh! Master Duel v.1.4.2  
+Game Language: Simplified Chinese
