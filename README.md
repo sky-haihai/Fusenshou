@@ -1,5 +1,7 @@
 # 我が名は、不戦勝 (Fusenshou)
 
+50x10=500
+
 ## Dependencies
 ```
 pip install pyautogui
