@@ -115,13 +115,13 @@ def onEndDuel():
     t.sleep(1)
 
     #in case obtained something
-    coord=getCoord('res/confirm_btn.png',10)
+    coord=getCoord('res/confirm_btn.png',max_trail=5)
     if(coord!=None):
         x,y=coord
         gui.moveTo(x,y,1)
         gui.click()
 
-    if(getCoord('res/start_duel_btn.png')!=None):
+    if(getCoord('res/start_duel_btn.png',1)!=None):
         changeState('StartDuel')
 
 #find a random card and discard
