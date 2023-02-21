@@ -1,6 +1,6 @@
 # 我が名は、不戦勝 (Fusenshou)
 
-50x10=500
+### 50 x 10 = 500
 
 ## Dependencies
 ```
